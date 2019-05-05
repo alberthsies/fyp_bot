@@ -87,8 +87,9 @@ if __name__ == '__main__':
             for i in range(int(sys.argv[2])):
                 try:
                     scenario = random.choice(action.scenario_list)
+                    normal_starting_time = str(datetime.now())
                     scenario()
-                    firebaseDAO.normal_record(str(scenario), str(datetime.now()), config.config['user_Albert']) 
+                    firebaseDAO.normal_record(str(scenario), normal_starting_time, config.config['user_Albert']) 
                 except NoSuchElementException:
                     continue
     
@@ -123,8 +124,9 @@ if __name__ == '__main__':
                     continue  
                 else:
                     try:
+                        normal_starting_time = str(datetime.now())
                         action.scenario_list[index]()
-                        firebaseDAO.normal_record(normal_scenario=str(action.scenario_list[index]), access_time=str(datetime.now()), creater=config.config['user_Albert'])
+                        firebaseDAO.normal_record(normal_scenario=str(action.scenario_list[index]), access_time=normal_starting_time, creater=config.config['user_Albert'])
                     except NoSuchElementException:
                         continue
 
